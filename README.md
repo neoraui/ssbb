@@ -1,1 +1,2 @@
-# ssbb
+# starter
+Starter file setup
