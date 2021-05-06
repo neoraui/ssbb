@@ -1,0 +1,47 @@
+button.btn-link {
+    border-radius: 25px;
+    min-width: 75px;
+    text-align: center;
+    padding: 8px 12px;
+    border: 1px solid;
+    transition: .2s;
+    cursor: pointer;
+    outline: none;
+    &.default {
+        background: white;
+        color: $ash-gray;
+        border-color: $ash-gray;
+        &:hover {
+            background: $ash-gray;
+            color: white;
+        }
+    }
+    &.blue-btn {
+        border-color: $deep-blue-light;
+        background: $deep-blue-light;
+        color: white;
+        &:hover {
+            border-color: $deep-blue-dark;
+            background: $deep-blue-dark;
+            color: white;
+        }
+    }
+    &.orange-btn {
+        background: $happiness-orange;
+        color: white;
+        border-color: $happiness-orange;
+        &:hover {
+            border-color: darken($happiness-orange, 5%);
+            background: darken($happiness-orange, 5%);
+            color: white;
+        }
+    }
+}
+
+a.link {
+    color: lighten($deep-blue-light, 15%);
+    transition: .2s;
+    &:hover {
+        color: lighten($deep-blue-light, 25%);
+    }
+}
