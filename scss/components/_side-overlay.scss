@@ -1,0 +1,40 @@
+.side-overlay {
+    @include size(100vh, 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    transition: background 1s;
+    @include flex(row, nowrap, flex-end, flex-end);
+    display: none;
+    animation: overlay 1s .3s ease forwards;
+    &.active {
+        display: flex;
+    }
+    & .panel-right {
+        @include size(90%, 100%);
+        margin-top: auto;
+        background: white;
+        box-shadow: -6px -3px 12px rgba(0, 0, 0, 0.5);
+        transform: translate3d(300%, 0, 0);
+        animation: slideInUp .3s 1s ease forwards;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        @media (min-width: 768px) {
+            width: 100%;
+            max-width: 450px;
+            height: 100%;
+            border-radius: 0;
+            animation: slideInRight .3s 1s ease forwards;
+        }
+    }
+}
+
+@keyframes overlay {
+    0% {
+    }
+    100% {
+        @include glass(3px);
+        background: rgba(35, 51, 76, 0.491);
+    }
+}

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- animation library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- font awesome import -->
     <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
     <!-- compiled css import -->
@@ -37,6 +39,9 @@
     </header>
 
     <main>
+        <div class="side-overlay">
+            <div class="panel-right"></div>
+        </div>
         <section class="no-orders">
             <div class="hero">
                 <div class="max-width-content">
@@ -51,32 +56,32 @@
                     <img class="content-block-logo" src="./assets/logos/ss.svg" alt="SS logo">
                 </div>
                 <div class="content-points">
-                    <div class="point">
+                    <div class="point heart">
                         <div class="badge"><i class="fas fa-heart"></i></div>
                         <h3>Free Products? Yep, It's True!</h3>
                         <p>Receive a different free Neora Booster Product (valued at $30) on every eligible order each month.</p>
                     </div>
-                    <div class="point">
+                    <div class="point money">
                         <div class="badge"><i class="fas fa-dollar-sign"></i></div>
                         <h3>NEORACASH</h3>
                         <p>With every order you place, earn 10% NeoraCASH to use on future SmartShop orders. Available to Preferred Customers only.</p>
                     </div>
-                    <div class="point">
+                    <div class="point shipping">
                         <div class="badge"><i class="fas fa-shipping-fast"></i></div>
                         <h3>Free Shipping</h3>
                         <p>Free shipping on all orders of $150 or more. Available to Preferred Customers only.</p>
                     </div>
-                    <div class="point">
+                    <div class="point percent">
                         <div class="badge"><i class="fas fa-percent"></i></div>
                         <h3>Across-The-Board Savings</h3>
                         <p>Automatically save up to 25% on retail prices with every order!</p>
                     </div>
-                    <div class="point">
+                    <div class="point tag">
                         <div class="badge"><i class="fas fa-tags"></i></div>
                         <h3>Special Offers (Just For You)</h3>
                         <p>Get VIP access to promotional offers for Preferred Customers only.</p>
                     </div>
-                    <div class="point">
+                    <div class="point check">
                         <div class="badge"><i class="fas fa-check"></i></div>
                         <h3>Neora Perks Discount Program</h3>
                         <p>Enjoy a free membership with hundreds of special discounts from cool companies year-round.</p>
@@ -84,8 +89,37 @@
                 </div>
             </div>
         </section>
-        <section class="with-orders">
-            
+        <section class="with-orders hide">
+            <div class="user-dashboard">
+                <div class="max-width-content">
+                    <div class="dashboard-info">
+                        <div class="group">
+                            <img src="./assets/logos/ss.svg" alt="SS Logo">
+                            <p>Select Your Order <span class="badge">1</span></p>
+                        </div>
+                        <div class="custom-select-menu-container">
+                            <div class="custom-select-menu">
+                                <div class="select-order-number">
+                                    <p>423345</p>
+                                </div>
+                                <div class="select-order-date">
+                                    <p class="small">Ships next: 05/15/21</p>
+                                    <p class="large">Next Ship Date: Saturday May 15, 2021</p>
+                                </div>
+                                <div class="select-order-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="select-drop-down">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-content">
+                        <img src="./assets/banners/banner2.jpeg" alt="Banner Image">
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     

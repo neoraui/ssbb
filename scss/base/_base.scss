@@ -18,11 +18,12 @@ a {
 }
 ::-webkit-scrollbar {
   width: 6px;
+  background: darken($deep-blue-dark, 15%);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(21 20 26 / 63%);
+  background-color: $deep-blue-dark;
   border-radius: 10px;
 }
 

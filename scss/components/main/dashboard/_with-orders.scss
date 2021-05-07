@@ -1,0 +1,133 @@
+.user-dashboard {
+    @include size(auto, 100%);
+    min-height: 100px;
+    padding: 15px 0;
+    color: white;
+    background: $deep-blue-dark;
+    & .max-width-content {
+        @include flex(row, nowrap, center, center);
+        & .dashboard-info, & .carousel-content {
+            @include size(100px, 100%);
+        }
+        & .dashboard-info {
+            padding: 0 15px;
+            @include flex(column, nowrap, space-evenly, center);
+            & .group {
+                width: 100%;
+                @include flex(row, wrap, space-between, flex-end);
+                & img {
+                    width: 100%;
+                    max-width: 200px;
+                }
+                & p {
+                    @include flex(row, nowrap, flex-start, center);
+                    margin-left: auto;
+                    margin-top: 10px;
+                    & .badge {
+                        margin-left:10px;
+                        color: $deep-blue-dark;
+                        background: white;
+                        @include simpleSize(15px);
+                        @include flex(row, nowrap, center, center);
+                        border-radius: 50%;
+                        font-size: .7rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+            & .custom-select-menu-container {
+                @include size(auto, 100%);
+                position: relative;
+                & .custom-select-menu {
+                    background: #eee;
+                    border-radius: 3px;
+                    @include size(35px, 100%);
+                    @include flex(row, nowrap, space-between, center);
+                    transition: .2s;
+                    cursor: pointer;
+                    overflow: hidden;
+                    z-index: 5;
+                    &:hover {
+                        background: darken(#eee, 3%);
+                        & .select-order-arrow {
+                            background: #ccc;
+                        }
+                    }
+                    & div {
+                        height: 100%;
+                        pointer-events: none;
+                        @include flex(row, nowrap, center, center);
+                    }
+                    & .select-order-number {
+                        background: rgba(#ccc, 0.4);
+                        color: darken($ash-gray, 15%);
+                        padding: 10px;
+                        font-size: .7rem;
+                        font-weight: 600;
+                    }
+                    & .select-order-date {
+                        padding: 0 5px;
+                        color: $ash-gray;
+                        width: 100%;
+                        & p.large {
+                            display: none;
+                        }
+                        @media (min-width: 450px) {
+                            & p.small {
+                                display: none;
+                            }
+                            & p.large {
+                                display: block;
+                            }
+                        }
+                    }
+                    & .select-order-arrow {
+                        background: rgba(#ccc, 0.4);
+                        color: darken($ash-gray, 15%);
+                        padding: 10px;
+                        transition: .2s;
+                        & i {
+                            transition: .2s;
+                            &.active {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+                }
+                & .select-drop-down {
+                    @include size(auto, 100%);
+                    position: absolute;
+                    top: 0%;
+                    left: 0;
+                    min-height: 100px;
+                    background: white;
+                    border-radius: 3px;
+                    box-shadow: 0 4px 4px rgba(0, 0, 0,0.15);
+                    transition: .4s;
+                    pointer-events: none;
+                    opacity: 0;
+                    &.active {
+                        pointer-events: auto;
+                        opacity: 1;
+                        top: 110%;
+                    }
+                }
+            }
+        }
+        & .carousel-content {
+            @include flex(row, nowrap, center, cneter);
+            display: none;
+            padding: 0 15px;
+            max-height: 100px;
+            & img {
+                max-height: 100px;
+                max-width: 100%;
+                margin: auto;
+                border-radius: 5px;
+            }
+            @media (min-width: 768px) {
+                display: flex;
+            }
+        }
+    }
+}
