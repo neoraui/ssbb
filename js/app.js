@@ -77,17 +77,6 @@ const ss = {
 
 
 
-
-     
-
-
-
-
-
-
-
-
-
     run: () => {
         console.log('SS running...');
         ss.handle_new_order();
@@ -120,4 +109,4 @@ product_data[0].products.forEach((product, index) => {
         </div>
     </div>
     `
-})
+});
