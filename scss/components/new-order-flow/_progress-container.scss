@@ -1,0 +1,44 @@
+.create-new-order-flow {
+    @include size(100%, 100%);
+    @include flex(column, nowrap, flex-start, center);
+}
+
+
+
+.progress-container {
+    background: rgba(white, 1);
+    @include size(auto, 100%);
+    @include flex(row, nowrap, space-evenly, center);
+    border-bottom: 1px solid #eee;
+    padding: 10px 5px;
+    & .progress-point {
+        &.disabled {
+            opacity: 0.3;
+            & p {
+                color: $ash-gray;
+            }
+            & .badge {
+                background: $ash-gray;
+            }
+        }
+    }
+    & .badge {
+        background: $deep-blue-light;
+        color: white;
+        @include simpleSize(25px);
+        border-radius: 50%;
+        @include flex(row, nowrap, center, center);
+        padding: 5px;
+    }
+    & p {
+        color: $deep-blue-light;
+        @include flex(row, nowrap, flex-start, center);
+        // font-weight: 600;
+        font-size: 1rem;
+        & .badge {
+            font-size: .8rem;
+            margin-right: 5px;
+            font-weight: 600;
+        }
+    }
+}

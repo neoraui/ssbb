@@ -17,7 +17,7 @@
         <nav>
             <div class="main-nav-content">
                 <div class="user-container">
-                    <img src="https://lh3.googleusercontent.com/proxy/9yeKtY0Xu6m1kpgzrTZma6W7VHUJYMSrvKxE3f87_BSesV9i_qQIJfJuVgtKxUkiMAV1ynxvtr9TA--mJJVN-KhUGAkae7DBdDihq50vGWc_c_RAN5NRwtsz5DVCEIP1N4k" alt="User image">
+                    <img src="./assets/users/user1.png" alt="User image">
                     <div class="text-group">
                         <p>Tonya Lodge</p>
                         <p>Customer ID: 1235125</p>
@@ -39,9 +39,62 @@
     </header>
 
     <main>
+
         <div class="side-overlay">
-            <div class="panel-right"></div>
+            <div class="panel-right">
+                <div class="create-new-order-flow">
+                    <div class="progress-container">
+                        <div class="progress-point">
+                            <p><span class="badge">1</span>Add Products</p>
+                        </div>
+                        <div class="progress-point disabled">
+                            <p><span class="badge">2</span>Checkout</p>
+                        </div>
+                    </div>
+                    <div class="add-products-flow">
+                        <h2 class="header">Add your favorite products to your new SmartShop order</h2>
+                        <div class="select-container">
+                            <div class="custom-select-menu">
+                                <p class="selected-option no-touch">All Products</p>
+                                <div class="select-arrow no-touch"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li class="active"><p class="no-touch">All Products</p></li>
+                                    <li><p class="no-touch">Sets & Combos</p></li>
+                                    <li><p class="no-touch">Skincare</p></li>
+                                    <li><p class="no-touch">Hair Care</p></li>
+                                    <li><p class="no-touch">Wellness</p></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-catalog">
+                            <div class="sets-combos section">
+                                <h3>Sets & Combos</h3>
+                                <div class="catalog">
+                                    <!-- dynamic-->
+                                </div>
+                            </div>
+                            <div class="skincare section">
+                                <h3>skincare</h3>
+                                <div class="catalog"></div>
+                            </div>
+                            <div class="haircare section">
+                                <h3>Hair Care</h3>
+                                <div class="catalog"></div>
+                            </div>
+                            <div class="wellness section">
+                                <h3>Wellness</h3>
+                                <div class="catalog"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-flow"></div>
+                </div>
+            </div>
         </div>
+
+
         <section class="no-orders">
             <div class="hero">
                 <div class="max-width-content">
@@ -89,6 +142,8 @@
                 </div>
             </div>
         </section>
+
+
         <section class="with-orders hide">
             <div class="user-dashboard">
                 <div class="max-width-content">
@@ -121,6 +176,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     
     <footer></footer>
