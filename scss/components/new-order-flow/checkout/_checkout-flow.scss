@@ -1,0 +1,5 @@
+.checkout-flow {
+    // background: #eee;
+    @include simpleSize(100%);
+    animation: slideInRight .8s ease forwards;
+}

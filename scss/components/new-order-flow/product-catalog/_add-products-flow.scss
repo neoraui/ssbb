@@ -9,14 +9,14 @@
         margin: 15px auto;
         text-align: center;
         opacity: 0;
-        animation: fadeInUp 1.2s 2s ease forwards;
+        animation: fadeInUp 1.2s 1.5s ease forwards;
     }
     & .select-container {
         @include size(auto, 100%);
         position: relative;
         margin-bottom: 35px;
         opacity: 0;
-        animation: fadeInUp 1s 2.5s ease forwards;
+        animation: fadeInUp 1s 1.75s ease forwards;
         z-index: 100;
         & .custom-select-menu {
             @include size(35px, 100%);
@@ -91,7 +91,7 @@
         overflow: auto;
         @include flex(column, nowrap, flex-start, center);
         opacity: 0;
-        animation: fadeInUp 1s 3s ease forwards;
+        animation: fadeInUp 1s 2s ease forwards;
         & .section {
             width: 100%;
             & h3 {
@@ -126,6 +126,7 @@
                 border-left: 4px solid transparent;
                 &.added {
                     border-color: $success-green;
+                    background: rgba($success-green, 0.1);
                 }
                 & img {
                     max-width: 50px;

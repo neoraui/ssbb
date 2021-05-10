@@ -23,6 +23,8 @@ const iterateClass_inverted = (className, collection, e) => {
 
 
 const ss = {
+
+    
     new_order: {
         start: () => {
             let btn = document.querySelector('.hero button');
@@ -161,6 +163,81 @@ const ss = {
             })
         }
     },
+    checkout: {
+        open: () => {
+            let next = document.querySelector('.main-btn-container .blue-btn');
+            let btn_container = document.querySelector('.main-btn-container');
+            let progress_points = document.querySelectorAll('.progress-container .progress-point');
+            let flow1 = document.querySelector('.add-products-flow');
+            let flow2 = document.querySelector('.checkout-flow');
+            btn_container.addEventListener('click', e => {
+                if (e.target === next) {
+                    progress_points[1].classList.remove('disabled');
+                    flow1.classList.add('hide');
+                    flow2.classList.remove('hide');
+                }
+            })
+        },
+        navigate: () => {
+            let next = document.querySelector('.main-btn-container .blue-btn');
+            
+        },
+    },
+
+
+    flows: {
+        create_new: {
+            add_products: {
+
+            },
+            checkout: {
+                open_checkout: (e) => {
+                    let btn_container = document.querySelector('.main-btn-container');
+                    let back = document.querySelector('.main-btn-container .default');
+                    let next = document.querySelector('.main-btn-container .blue-btn');
+                    let add_products_flow = document.querySelector('.add-products-flow');
+                    let checkout_flow = document.querySelector('.checkout-flow');
+                    let flow1 = document.querySelector('.add-products-flow');
+                    let flow2 = document.querySelector('.checkout-flow');
+                    let header = flow1.querySelector('h2.header');
+                    let select = flow1.querySelector('.select-container');
+                    let catalog = flow1.querySelector('.product-catalog');
+                    let animation_arr = [header, select, catalog];
+                    btn_container.addEventListener('click', e => {
+                        if (e.target === next) {
+                            add_products_flow.classList.add('hide');
+                            checkout_flow.classList.remove('hide');
+                            flow1.classList.add('hide');
+                            flow2.classList.remove('hide');
+                            back.textContent = 'Back to Products';
+                            next.textContent = 'Create Order';
+                            next.style.background = '#ff9e15';
+                            next.style.borderColor = '#ff9e15';
+                        } else
+                        if (e.target === back && flow2.classList.contains('hide')) {
+                            location.reload();
+                        } else {
+                            flow1.classList.remove('hide');
+                            flow2.classList.add('hide');
+                            back.textContent = 'Exit';
+                            next.style.background = '#165e7a';
+                            next.style.borderColor = '#165e7a';
+                            next.textContent = 'Next';
+                            animation_arr.forEach((el) => {
+                                el.style.animation = 'none';
+                                el.style.opacity = '1';
+                            })
+                        }
+                        
+                    });
+                }
+            },
+            initiate: () => {
+                ss.flows.create_new.checkout.open_checkout();
+            }
+        },
+
+    },
 
 
     run: () => {
@@ -172,6 +249,12 @@ const ss = {
         ss.add_products_dropdown.handle_selection();
 
         ss.add_product.change_button();
+
+        // ss.checkout.open();
+        ss.checkout.navigate();
+
+
+        ss.flows.create_new.initiate();
     }
 }
 
