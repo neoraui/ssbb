@@ -868,9 +868,10 @@ main {
 .add-products-flow .product-catalog .catalog .product-card .card-content .price-and-add button {
   margin-left: auto;
   min-width: 80px;
-  background: #eee;
-  border-color: #eee;
+  background: #e3e6e8;
+  border-color: #e3e6e8;
   color: #5c666f;
+  transition: 0.3s;
 }
 .add-products-flow .product-catalog .catalog .product-card .card-content .price-and-add button:hover {
   border-color: #165e7a;

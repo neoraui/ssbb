@@ -165,9 +165,10 @@
                         & button {
                             margin-left: auto;
                             min-width: 80px;
-                            background: #eee;
-                            border-color: #eee;
+                            background: darken(#eef0f1, 4%);
+                            border-color: darken(#eef0f1, 4%);
                             color: $ash-gray;
+                            transition: .3s;
                             &:hover {
                                 border-color: $deep-blue-light;
                                 background: $deep-blue-light;

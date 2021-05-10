@@ -6,16 +6,6 @@
     background: darken(#eef0f1, 5%);
     & button {
         width: 100%;
-        &.default {
-            // background: transparent;
-            // border-color: white;
-            // color: white;
-            // &:hover {
-            //     background: white;
-            //     color: $deep-blue-light;
-            //     border-color: $deep-blue-light;
-            // }
-        }
         &:first-child {
             margin-right: 5px;
         }
