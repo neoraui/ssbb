@@ -122,6 +122,11 @@
                 animation: backInUp 1s ease forwards;
                 @include flex(row, nowrap, space-between, center);
                 margin-bottom: 5px;
+                border: none;
+                border-left: 4px solid transparent;
+                &.added {
+                    border-color: $success-green;
+                }
                 & img {
                     max-width: 50px;
                     margin-right: 10px;

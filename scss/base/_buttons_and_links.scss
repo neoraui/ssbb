@@ -50,6 +50,20 @@ button.btn-link {
             color: white;
         }
     }
+    &.added-btn {
+        background: $ash-gray!important;
+        color: white!important;
+        border-color: $ash-gray!important;
+        pointer-events: none;
+    }
+    &.loading-btn {
+        background: $ash-gray;
+        @include flex(row, nowrap, center, center);
+        pointer-events: none;
+        & img {
+            margin: auto;
+        }
+    }
 }
 
 a.link {

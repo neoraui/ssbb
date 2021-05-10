@@ -142,6 +142,25 @@ const ss = {
         }
     },
 
+    add_product: {
+        change_button: () => {
+            let catalog = document.querySelector('.product-catalog');
+            let next = document.querySelector('.main-btn-container .blue-btn');
+            catalog.addEventListener('click', e => {
+                if (e.target.textContent === 'Add') {
+                    e.target.innerHTML = `<img class="button-loader" src="./assets/loaders/loader.gif" alt="loader">`
+                    e.target.classList.add('loading-btn');
+                    setTimeout(() => {
+                        e.target.textContent = 'Added';
+                        e.target.classList.remove('loading-btn')
+                        e.target.classList.add('added-btn');
+                        e.target.parentNode.parentNode.parentNode.classList.add('added');
+                        next.classList.remove('disabled');
+                    }, 2300)
+                }
+            })
+        }
+    },
 
 
     run: () => {
@@ -151,6 +170,8 @@ const ss = {
         // ss.handle_overlay.activate_side_overlay();
         ss.add_products_dropdown.handle_filter();
         ss.add_products_dropdown.handle_selection();
+
+        ss.add_product.change_button();
     }
 }
 
