@@ -7,6 +7,13 @@
     align-items: $a;
 }
 
+@mixin centerFlex() {
+    @content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @mixin size($h, $w) {
     @content;
     height: $h;

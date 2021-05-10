@@ -9,23 +9,45 @@ const iterateClass = (className, collection, e) => {
         }
     });
 }
+const iterateClass_inverted = (className, collection, e) => {
+    collection.forEach((item) => {
+        if (e.target === item) {
+            for (let i = 0; i < collection.length; i++) {
+                collection[i].classList.add(className)
+            }
+            item.classList.remove(className);
+        }
+    });
+}
+
 
 
 const ss = {
-    handle_new_order: () => {
-        let btn = document.querySelector('.hero button');
-        let no_orders = document.querySelector('.no-orders');
-        let with_orders = document.querySelector('.with-orders');
-        let overlay = document.querySelector('.side-overlay');
-        btn.addEventListener('click', e => {
-            no_orders.classList.toggle('hide');
-            with_orders.classList.toggle('hide');
-            with_orders.style.animation = 'bounceInUp 1s ease forwards';
-            overlay.classList.toggle('active');
-        });
+    new_order: {
+        start: () => {
+            let btn = document.querySelector('.hero button');
+            let no_orders = document.querySelector('.no-orders');
+            let with_orders = document.querySelector('.with-orders');
+            let overlay = document.querySelector('.side-overlay');
+            btn.addEventListener('click', e => {
+                no_orders.classList.toggle('hide');
+                with_orders.classList.toggle('hide');
+                with_orders.style.animation = 'bounceInUp 1s ease forwards';
+                ss.overlay.open('active', closeable = false);
+                ss.overlay.close();
+                
+            });
+        }
     },
-    handle_overlay: {
-        activate_side_overlay: () => {
+    overlay: {
+        open: (classes, closeable) => {
+            let overlay = document.querySelector('.side-overlay');
+            overlay.classList.add(classes);
+            if (closeable) {
+                overlay.classList.add('closeable');
+            }
+        },
+        close: () => {
             let overlay = document.querySelector('.side-overlay');
             let panel = overlay.querySelector('.panel-right');
             overlay.addEventListener('click', e => {
@@ -48,9 +70,9 @@ const ss = {
         });
     },
     add_products_dropdown: {
-        select : document.querySelector('.add-products-flow .custom-select-menu'),
-        dropdown : document.querySelector('.add-products-flow .dropdown-menu'),
-        arrow : document.querySelector('.select-arrow i'),
+        select: document.querySelector('.add-products-flow .custom-select-menu'),
+        dropdown: document.querySelector('.add-products-flow .dropdown-menu'),
+        arrow: document.querySelector('.select-arrow i'),
 
         handle_filter: () => {
             
@@ -71,7 +93,52 @@ const ss = {
                         
                     }
                 });
+
+                let sections = document.querySelectorAll('.product-catalog.section');
+                let sets = document.querySelector('.sets-combos.section');
+                let skincare = document.querySelector('.skincare.section');
+                let haircare = document.querySelector('.haircare.section');
+                let wellness = document.querySelector('.wellness.section');
+                let sections_arr = [sets, skincare, haircare, wellness];
+                
+
+                const filter = (e) => {
+                    if (e.target.classList.contains('active')) {
+                        sections_arr.forEach((el) => {
+                            el.classList.add('hide');
+                        });
+                    }
+
+                    setTimeout(() => {
+                        if (e.target.textContent === 'All Products') {
+                            sections_arr.forEach((el) => {
+                                el.classList.remove('hide');
+                            })
+                        } else
+                        if (e.target.textContent === 'Sets & Combos') {
+                            
+                            sets.classList.remove('hide');
+                        } else
+                        if (e.target.textContent === 'Skincare') {
+                            
+                            skincare.classList.remove('hide');
+                        } else
+                        if (e.target.textContent === 'Hair Care') {
+                            
+                            haircare.classList.remove('hide');
+                        } else
+                        if (e.target.textContent === 'Wellness') {
+                            
+                            wellness.classList.remove('hide');
+                        }
+                    }, 200)
+                    
+                }
+                filter(e);
             });
+
+            
+            
         }
     },
 
@@ -79,9 +146,9 @@ const ss = {
 
     run: () => {
         console.log('SS running...');
-        ss.handle_new_order();
+        ss.new_order.start();
         ss.handle_order_dropdown();
-        ss.handle_overlay.activate_side_overlay();
+        // ss.handle_overlay.activate_side_overlay();
         ss.add_products_dropdown.handle_filter();
         ss.add_products_dropdown.handle_selection();
     }
@@ -96,16 +163,76 @@ product_data[0].products.forEach((product, index) => {
     sets_combos.innerHTML += 
     `
     <div class="product-card">
-        <div class="info-container">
-            <img src="${product.image_thumb}" alt="">
-            <div class="group">
+        <img src="${product.image_thumb}" alt="Image of ${product.name}">
+        <div class="card-content">
+            <div class="name-and-info">
                 <h3>${product.name}</h3>
+                    <button class="btn-link round"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="price-and-add">
                 <p class="price"><span class="strike">$${product.price}.00 USD</span> <br> $${product.ss_price}.00 USD</p>
+                <button class="btn-link blue-btn">Add</button>
             </div>
         </div>
-        <div class="btn-container">
-            <button class="btn-link default">Quick View</button>
-            <button class="btn-link blue-btn">Add To Bag</button>
+    </div>
+    `
+});
+
+let skincare = document.querySelector('.skincare .catalog');
+product_data[1].products.forEach((product, index) => {
+    skincare.innerHTML += 
+    `
+    <div class="product-card">
+        <img src="${product.image_thumb}" alt="Image of ${product.name}">
+        <div class="card-content">
+            <div class="name-and-info">
+                <h3>${product.name}</h3>
+                    <button class="btn-link round"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="price-and-add">
+                <p class="price"><span class="strike">$${product.price}.00 USD</span> <br> $${product.ss_price}.00 USD</p>
+                <button class="btn-link blue-btn">Add</button>
+            </div>
+        </div>
+    </div>
+    `
+});
+
+let haircare = document.querySelector('.haircare .catalog');
+product_data[2].products.forEach((product, index) => {
+    haircare.innerHTML += 
+    `
+    <div class="product-card">
+        <img src="${product.image_thumb}" alt="Image of ${product.name}">
+        <div class="card-content">
+            <div class="name-and-info">
+                <h3>${product.name}</h3>
+                    <button class="btn-link round"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="price-and-add">
+                <p class="price"><span class="strike">$${product.price}.00 USD</span> <br> $${product.ss_price}.00 USD</p>
+                <button class="btn-link blue-btn">Add</button>
+            </div>
+        </div>
+    </div>
+    `
+});
+
+let wellness = document.querySelector('.wellness .catalog');
+product_data[3].products.forEach((product, index) => {
+    wellness.innerHTML += 
+    `
+    <div class="product-card">
+        <img src="${product.image_thumb}" alt="Image of ${product.name}">
+        <div class="card-content">
+            <div class="name-and-info">
+                <h3>${product.name}</h3>
+                    <button class="btn-link round"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="price-and-add">
+                <p class="price"><span class="strike">$${product.price}.00 USD</span> <br> $${product.ss_price}.00 USD</p>
+                <button class="btn-link blue-btn">Add</button>
+            </div>
         </div>
     </div>
     `

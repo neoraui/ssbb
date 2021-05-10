@@ -7,6 +7,10 @@ button.btn-link {
     transition: .2s;
     cursor: pointer;
     outline: none;
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
     &.default {
         background: white;
         color: $ash-gray;
@@ -14,6 +18,16 @@ button.btn-link {
         &:hover {
             background: $ash-gray;
             color: white;
+        }
+    }
+    &.round {
+        background: transparent;
+        border-radius: 50%;
+        width: auto;
+        min-width: 0;
+        border: none;
+        &:hover {
+            background: #eee
         }
     }
     &.blue-btn {
@@ -31,8 +45,8 @@ button.btn-link {
         color: white;
         border-color: $happiness-orange;
         &:hover {
-            border-color: darken($happiness-orange, 5%);
-            background: darken($happiness-orange, 5%);
+            border-color: lighten($happiness-orange, 5%);
+            background: lighten($happiness-orange, 5%);
             color: white;
         }
     }

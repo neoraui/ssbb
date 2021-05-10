@@ -1,4 +1,38 @@
-.checkout-flow {
+.panel-price-summary {
     @include size(50px, 100%);
-    background: white;
+    @include flex(row, nowrap, space-between, center);
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    background: darken($deep-blue-light, 2%);
+    position: relative;
+    cursor: pointer;
+    transition: .2s;
+    // box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.05);
+    &:hover {
+        background: $deep-blue-light;
+        & .toggle-summary-btn {
+            background: $deep-blue-light;
+            & i {
+                color: white;
+            }
+        }
+    }
+     & .toggle-summary-btn {
+         @include simpleSize(25px);
+         border-radius: 50%;
+         @include absoluteCenter;
+         @include centerFlex;
+         background: white;
+         border: 2px solid white;
+         transition: .3s;
+         box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.05);
+         top: 0px;
+        & i {
+            color: $deep-blue-dark;
+            @include centerFlex;
+            font-size: .8rem;
+            margin: auto;
+        }
+     }
 }
