@@ -24,23 +24,6 @@ const iterateClass_inverted = (className, collection, e) => {
 
 const ss = {
 
-    
-    new_order: {
-        start: () => {
-            let btn = document.querySelector('.hero button');
-            let no_orders = document.querySelector('.no-orders');
-            let with_orders = document.querySelector('.with-orders');
-            let overlay = document.querySelector('.side-overlay');
-            btn.addEventListener('click', e => {
-                no_orders.classList.toggle('hide');
-                with_orders.classList.toggle('hide');
-                with_orders.style.animation = 'bounceInUp 1s ease forwards';
-                ss.overlay.open('active', closeable = false);
-                ss.overlay.close();
-                
-            });
-        }
-    },
     overlay: {
         open: (classes, closeable) => {
             let overlay = document.querySelector('.side-overlay');
@@ -62,15 +45,8 @@ const ss = {
             });
         }
     },
-    handle_order_dropdown: () => {
-        let select = document.querySelector('.dashboard-info .custom-select-menu');
-        let dropdown = document.querySelector('.dashboard-info .select-drop-down');
-        let arrow = document.querySelector('.dashboard-info .select-order-arrow i');
-        select.addEventListener('click', e => {
-            dropdown.classList.toggle('active');
-            arrow.classList.toggle('active');
-        });
-    },
+
+    
     add_products_dropdown: {
         select: document.querySelector('.add-products-flow .custom-select-menu'),
         dropdown: document.querySelector('.add-products-flow .dropdown-menu'),
@@ -163,30 +139,42 @@ const ss = {
             })
         }
     },
-    checkout: {
-        open: () => {
-            let next = document.querySelector('.main-btn-container .blue-btn');
-            let btn_container = document.querySelector('.main-btn-container');
-            let progress_points = document.querySelectorAll('.progress-container .progress-point');
-            let flow1 = document.querySelector('.add-products-flow');
-            let flow2 = document.querySelector('.checkout-flow');
-            btn_container.addEventListener('click', e => {
-                if (e.target === next) {
-                    progress_points[1].classList.remove('disabled');
-                    flow1.classList.add('hide');
-                    flow2.classList.remove('hide');
-                }
+
+    subtotal: {
+        toggle: () => {
+            let subtotal = document.querySelector('.panel-price-summary');
+            let summary = document.querySelector('.panel-right .summary');
+            let summary_btn = document.querySelector('.toggle-summary-btn i');
+            subtotal.addEventListener('click', e => {
+                summary.classList.toggle('show')
+                summary_btn.classList.toggle('flip');
             })
         },
-        navigate: () => {
-            let next = document.querySelector('.main-btn-container .blue-btn');
-            
-        },
+
+        run: () => {
+            ss.subtotal.toggle();
+        }
+
     },
+    
 
 
     flows: {
         create_new: {
+            start: () => {
+                let btn = document.querySelector('.hero button');
+                let no_orders = document.querySelector('.no-orders');
+                let with_orders = document.querySelector('.with-orders');
+                let overlay = document.querySelector('.side-overlay');
+                btn.addEventListener('click', e => {
+                    no_orders.classList.toggle('hide');
+                    with_orders.classList.toggle('hide');
+                    with_orders.style.animation = 'bounceInUp 1s ease forwards';
+                    ss.overlay.open('active', closeable = false);
+                    ss.overlay.close();
+                    
+                });
+            },
             add_products: {
 
             },
@@ -214,7 +202,7 @@ const ss = {
                             next.style.background = '#ff9e15';
                             next.style.borderColor = '#ff9e15';
                         } else
-                        if (e.target === back && flow2.classList.contains('hide')) {
+                        if (e.target.textContent === 'Exit') {
                             location.reload();
                         } else {
                             flow1.classList.remove('hide');
@@ -237,13 +225,59 @@ const ss = {
             }
         },
 
+        existing_order: {
+            handle_order_dropdown: () => {
+                let select = document.querySelector('.dashboard-info .custom-select-menu');
+                let dropdown = document.querySelector('.dashboard-info .select-drop-down');
+                let arrow = document.querySelector('.dashboard-info .select-order-arrow i');
+                select.addEventListener('click', e => {
+                    dropdown.classList.toggle('active');
+                    arrow.classList.toggle('active');
+                });
+            },
+        },
+
+        global_flow: {
+            checkout: {
+                dom: {
+                    next: document.querySelector('.main-btn-container .blue-btn'),
+                    btn_container: document.querySelector('.main-btn-container'),
+                    progress_points: document.querySelectorAll('.progress-container .progress-point'),
+                    flow1: document.querySelector('.add-products-flow'),
+                    flow2: document.querySelector('.checkout-flow'),
+                },
+                open: () => {
+                    ss.flows.global_flow.checkout.dom.progress_points[1].classList.remove('disabled');
+                    ss.flows.global_flow.checkout.dom.flow1.classList.add('hide');
+                    ss.flows.global_flow.checkout.dom.flow2.classList.remove('hide');
+                },
+                close: () => {
+                    ss.flows.global_flow.checkout.dom.progress_points[1].classList.add('disabled');
+                    ss.flows.global_flow.checkout.dom.flow1.classList.remove('hide');
+                    ss.flows.global_flow.checkout.dom.flow2.classList.add('hide');
+                },
+                navigate: () => {
+                    
+                    ss.flows.global_flow.checkout.dom.btn_container.addEventListener('click', e => {
+                        if (e.target === ss.flows.global_flow.checkout.dom.next) {
+                            ss.flows.global_flow.checkout.open();
+                        } else 
+                        if (e.target.textContent === 'Back to Products') {
+                            ss.flows.global_flow.checkout.close();
+                        }
+                    })
+                },
+            },
+        }
+
     },
 
 
     run: () => {
         console.log('SS running...');
-        ss.new_order.start();
-        ss.handle_order_dropdown();
+        // ss.new_order.start();
+        ss.flows.create_new.start();
+        ss.flows.existing_order.handle_order_dropdown();
         // ss.handle_overlay.activate_side_overlay();
         ss.add_products_dropdown.handle_filter();
         ss.add_products_dropdown.handle_selection();
@@ -251,14 +285,16 @@ const ss = {
         ss.add_product.change_button();
 
         // ss.checkout.open();
-        ss.checkout.navigate();
+        ss.flows.global_flow.checkout.navigate();
 
+        ss.subtotal.run();
 
         ss.flows.create_new.initiate();
     }
 }
 
-ss.run();
+window.addEventListener('DOMContentLoaded', ss.run());
+
 
 
 

@@ -103,8 +103,6 @@
                     padding: 15px 10px;
                     border-radius: 3px;
                     width: 100%;
-                    background: darken(#eef0f1, 4%);
-                    // background: rgba(black, 0.1);
                     text-align: center;
                     display: block;
                 }
@@ -126,7 +124,7 @@
                 border-left: 4px solid transparent;
                 &.added {
                     border-color: $success-green;
-                    background: rgba($success-green, 0.1);
+                    // background: rgba($success-green, 0.1);
                 }
                 & img {
                     max-width: 50px;
